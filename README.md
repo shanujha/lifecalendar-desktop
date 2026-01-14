@@ -87,6 +87,35 @@ Append these to the base URL `https://shanujha.github.io/lifecalendar-desktop/` 
 - `d=true`: Automatically trigger image download 1 second after load.
 
 
+## Automation (Desktop Integration)
+
+You can automate the generation and application of your Life Calendar as a desktop wallpaper.
+
+### Windows (PowerShell)
+We provide a PowerShell script in the `scripts/` folder that renders the calendar using headless Chrome/Edge and applies it to both your Desktop Background and Lock Screen.
+
+**Usage:**
+1. Open PowerShell.
+2. Navigate to the project folder.
+3. Run the script:
+   ```powershell
+   .\scripts\update_wallpaper.ps1 -res 4k -months true
+   ```
+
+**Parameters:**
+- `-res`: Resolution preset (`1080p`, `4k`, `8k`) or custom `width,height`.
+- `-scale`: Manual dot scaling (e.g., `1.2`).
+- `-months`: `true` to show month names.
+- `-weeks`: `true` to show week labels.
+
+### Other Platforms
+Contributions are highly welcome for:
+- **macOS**: AppleScript or shell scripts for wallpaper/lockscreen integration.
+- **Linux**: Scripts for GNOME, KDE, or window managers (e.g., using `feh` or `gsettings`).
+- **AutoHotkey**: Scripts for scheduled updates or hotkey triggers.
+
+---
+
 ## Contributing
 
 Contributions are welcome to improve the rendering engine or add new design features.
