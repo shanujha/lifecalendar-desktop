@@ -105,11 +105,11 @@ main.grid {
     right: 0;
     text-align: center;
     color: #ff4757;
-    font-size: var(--stats-font, 7px);
+    font-size: var(--stats-font, 14px);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    opacity: 0.6;
+    opacity: 0.9;
     text-shadow: 0 0 20px rgba(255, 71, 87, 0.4);
     pointer-events: none;
 }
