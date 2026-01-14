@@ -2,6 +2,10 @@
 
 > 💡 Inspired by [thelifecalendar.com](https://thelifecalendar.com). They covered mobile devices, I wanted it on PC as well — so here we go!
 
+## How to Use
+
+![How-To Video](assets/how_to.mp4)
+
 ## Contents
 - [Overview](#overview)
 - [Usage](#usage)
