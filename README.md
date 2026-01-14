@@ -33,18 +33,48 @@ By default, the interface shows only the dot grid.
 - `h`: Custom height in pixels.
 - `scale`: Manual scaling multiplier for dots and typography. Default is 1.0 (relative to resolution).
 
-### Download Options
-- `d=true`: Triggers an automatic download of the rendered image one second after page load.
+## Quick Start Examples
 
-## Examples
+Direct links to common configurations:
 
-- **Standard 4K**: `?res=4k`
-- **Minimalist 8K**: `?res=8k`
-- **Complete Labels (4K)**: `?res=4k&months=true&weeks=true`
-- **Auto-Download 8K Minimalist**: `?res=8k&d=true`
+### Standard Desktop Wallpapers
+- **4K Ultra HD (Minimalist)**: [?res=4k](https://shanujha.github.io/lifecalendar-desktop/?res=4k)
+- **4K Ultra HD (Detailed)**: [?res=4k&months=true&weeks=true](https://shanujha.github.io/lifecalendar-desktop/?res=4k&months=true&weeks=true)
+- **8K Super Retina (Minimalist)**: [?res=8k](https://shanujha.github.io/lifecalendar-desktop/?res=8k)
+- **8K Super Retina (Jumbo Dots)**: [?res=8k&scale=1.5](https://shanujha.github.io/lifecalendar-desktop/?res=8k&scale=1.5)
 
-Full URL Example:
-`https://shanujha.github.io/lifecalendar-desktop/?res=8k&scale=2.5&d=true`
+### Custom & Ultra-Wide Screens
+- **MacBook Pro 14"**: [?w=3024&h=1964&scale=1.2](https://shanujha.github.io/lifecalendar-desktop/?w=3024&h=1964&scale=1.2)
+- **Ultra-Wide (21:9)**: [?w=3440&h=1440&scale=1.3](https://shanujha.github.io/lifecalendar-desktop/?w=3440&h=1440&scale=1.3)
+- **Super Ultra-Wide (32:9)**: [?w=5120&h=1440&scale=1.5](https://shanujha.github.io/lifecalendar-desktop/?w=5120&h=1440&scale=1.5)
+
+### One-Click Auto Download
+Append `&d=true` to any URL to trigger an automatic render and download.
+- **Auto-Render 4K Minimalist**: [?res=4k&d=true](https://shanujha.github.io/lifecalendar-desktop/?res=4k&d=true)
+- **Auto-Render 8K Detailed**: [?res=8k&months=true&weeks=true&d=true](https://shanujha.github.io/lifecalendar-desktop/?res=8k&months=true&weeks=true&d=true)
+
+---
+
+## Configuration Parameter Reference
+
+Append these to the base URL `https://shanujha.github.io/lifecalendar-desktop/` to customize your render.
+
+### Display Toggles
+- `months=true`: Show month names (default: hidden).
+- `weeks=true`: Show weekday initials (default: hidden).
+
+### Resolution Presets
+- `res=1080p`: 1920 x 1080
+- `res=4k`: 3840 x 2160
+- `res=8k`: 7680 x 4320
+
+### Custom Sizes
+- `w=[pixels]`: Custom width (e.g., `w=2560`).
+- `h=[pixels]`: Custom height (e.g., `h=1440`).
+- `scale=[multiplier]`: Adjust dot size relative to resolution (e.g., `scale=1.5`).
+
+### Download Automation
+- `d=true`: Automatically trigger image download 1 second after load.
 
 
 ## Contributing
