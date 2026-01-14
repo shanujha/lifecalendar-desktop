@@ -9,13 +9,22 @@ body {
     /* Prevent scrolling */
 }
 
+#viewport-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #000;
+}
+
 main.grid {
     --dot-size: 12px;
     --dot-gap: 5px;
     --header-font: 10px;
     --week-font: 7px;
     --month-gap: 2vh;
-    /* Relative to 1920 reference usually */
     --month-padding: 4vh;
 
     display: grid;
@@ -28,14 +37,12 @@ main.grid {
     box-sizing: border-box;
     place-items: center;
     background-color: #0d0d0d;
-    /* Explicit background for capture */
     position: relative;
-    overflow: hidden;
+    flex-shrink: 0;
 }
 
 /* Override for high-res mode */
 main.grid.rendering {
-    overflow: visible;
     height: auto;
     width: auto;
 }
