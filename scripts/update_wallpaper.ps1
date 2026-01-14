@@ -32,11 +32,13 @@ $resolutions = @{
 }
 
 $windowSize = if ($resolutions.ContainsKey($res)) { $resolutions[$res] } else { $res }
+# We use the live URL or local file path
 $url = "https://shanujha.github.io/lifecalendar-desktop/?res=$res&scale=$scale&months=$months&weeks=$weeks"
 
-Write-Host "Rendering wallpaper to $targetPath..." -ForegroundColor Cyan
+Write-Host "Rendering $res wallpaper to $targetPath..." -ForegroundColor Cyan
 
 # 3. Capture screenshot
+# By setting --window-size, Headless Chrome determines the 100vw/100vh area
 $chromeArgs = @(
     "--headless",
     "--disable-gpu",
@@ -44,6 +46,8 @@ $chromeArgs = @(
     "--window-size=$windowSize",
     "--default-background-color=00000000",
     "--hide-scrollbars",
+    "--virtual-time-budget=10000",
+    "--run-all-compositor-stages-before-draw",
     "$url"
 )
 
@@ -69,16 +73,14 @@ Add-Type -TypeDefinition $code -ErrorAction SilentlyContinue
 # 5. Set Lock Screen (requires WinRT API access)
 Write-Host "Setting Lock Screen..." -ForegroundColor Cyan
 try {
-    # Ensure Windows.System.UserProfile is available
     $AsyncInfo = [Windows.System.UserProfile.LockScreen, Windows.System.UserProfile, ContentType = WindowsRuntime]
     $file = Get-Item $targetPath
-    # Convert to StorageFile
     [Windows.Storage.StorageFile]::GetFileFromPathAsync($file.FullName).AsTask().ContinueWith({
         param($task)
         [Windows.System.UserProfile.LockScreen]::SetImageFileAsync($task.Result).AsTask().Wait()
     }).Wait()
 } catch {
-    Write-Warning "Could not set Lock Screen. This typically happens if the script isn't running in a supported UWP/WinRT context or version of Windows."
+    Write-Warning "Could not set Lock Screen. This typically happens if the script isn't running in a supported UWP/WinRT context."
 }
 
-Write-Host "Operation Complete! Wallpaper updated." -ForegroundColor Green
+Write-Host "Operation Complete! $res wallpaper applied." -ForegroundColor Green
