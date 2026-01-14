@@ -4,7 +4,9 @@
 
 ## How to Use
 
-<video src="assets/how_to.mp4" controls="controls" style="max-width: 100%; height: auto; display: block;"></video>
+<div align="center">
+  <video src="https://github.com/shanujha/lifecalendar-desktop/raw/main/assets/how_to.mp4" width="100%" controls></video>
+</div>
 
 ## Contents
 - [Overview](#overview)
