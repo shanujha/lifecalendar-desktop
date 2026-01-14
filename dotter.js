@@ -36,6 +36,7 @@ function dotter() {
     grid.style.setProperty('--dot-gap', `${Math.max(1, Math.floor(5 * finalScale))}px`);
     grid.style.setProperty('--header-font', `${(10 * finalScale).toFixed(1)}px`);
     grid.style.setProperty('--week-font', `${(7 * finalScale).toFixed(1)}px`);
+    grid.style.setProperty('--stats-font', `${(6 * finalScale).toFixed(1)}px`);
 
     const currentYear = today.getFullYear();
     const monthNames = [
@@ -104,6 +105,17 @@ function dotter() {
 
         monthContainer.appendChild(monthGrid);
         grid.appendChild(monthContainer);
+    }
+
+    // Update Stats
+    const totalDays = Math.round((new Date(currentYear + 1, 0, 1) - new Date(currentYear, 0, 1)) / (1000 * 60 * 60 * 24));
+    const daysPassed = dayOfYear + 1;
+    const daysLeft = totalDays - daysPassed;
+    const percentCompleted = Math.floor((daysPassed / totalDays) * 100);
+
+    const statsElement = document.getElementById('stats');
+    if (statsElement) {
+        statsElement.innerText = `${daysLeft} days left - ${percentCompleted}% completed`;
     }
 }
 
