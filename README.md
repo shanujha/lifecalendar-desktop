@@ -1,127 +1,81 @@
 # Life Calendar 
 
-> 💡 Inspired by [thelifecalendar.com](https://thelifecalendar.com). They covered the mobile devices, i wanted on PC as well - so here we go!
+> 💡 Inspired by [thelifecalendar.com](https://thelifecalendar.com). They covered mobile devices, I wanted it on PC as well — so here we go!
 
 ## Contents
 - [Overview](#overview)
 - [Usage](#usage)
-- [Quick Start Examples](#quick-start-examples)
-- [Configuration Parameter Reference](#configuration-parameter-reference)
+- [Configuration Parameters](#configuration-parameters)
+- [Automation (Desktop Integration)](#automation-desktop-integration)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## Overview
-### 8k with Default Scaling
-![8k](assets/8k.png)
 
-### 8k with 2.5 scaling
-![8k_2.5](assets/8k2.png)
+A high-resolution calendar generation engine that renders your year as a minimalist grid. Designed primarily for desktop wallpapers, it supports resolutions up to 8K with automated scaling and system integration.
 
-### 8k with 2.0 scaling and months and weeks
-![8k_2.0_w_m](assets/8k_weeks_months.png)
-
-A high-resolution calendar generation engine that renders your year as a minimalist grid. Designed primarily for desktop wallpapers, it supports resolutions up to 8K with automated scaling and export.
-
-
+### 8K Render Examples
+| Default Fit (Scale 1.0) | Jumbo Dots (Scale 2.0) | With Labels |
+| :--- | :--- | :--- |
+| ![8k](assets/8k.png) | ![8k_2.5](assets/8k2.png) | ![8k_2.0_w_m](assets/8k_weeks_months.png) |
 
 ## Usage
 
-The application is hosted at [shanujha.github.io/lifecalendar-desktop/](https://shanujha.github.io/lifecalendar-desktop/). You can use it directly in your browser or through the URL parameters for custom wallpaper generation.
+The application is hosted at [shanujha.github.io/lifecalendar-desktop/](https://shanujha.github.io/lifecalendar-desktop/). 
+
+You can use the site directly to generate a layout, but for the best experience (especially for 4K/8K wallpapers), use the **URL Parameters** or the **Automation Scripts** provided below.
 
 ## Configuration Parameters
 
-The application is controlled via URL query parameters. Append these to the base URL to customize the output.
+The engine is controlled via URL query parameters. Append these to the base URL to customize the output.
 
 ### Display Options
-By default, the interface shows only the dot grid.
-- `months=true`: Displays month headings.
+By default, the interface is a minimalist dot grid.
+- `months=true`: Displays month names.
 - `weeks=true`: Displays weekday labels (S M T W T F S).
 
 ### Resolution and Scaling
-- `res`: Standard resolution presets (`1080p`, `4k`, `8k`).
-- `w`: Custom width in pixels.
-- `h`: Custom height in pixels.
-- `scale`: Manual scaling multiplier for dots and typography. Default is 1.0 (relative to resolution).
-
-## Quick Start Examples
-
-Direct links to common configurations:
-
-### Standard Desktop Wallpapers
-- **4K Ultra HD (Minimalist)**: [?res=4k](https://shanujha.github.io/lifecalendar-desktop/?res=4k)
-- **4K Ultra HD (Detailed)**: [?res=4k&months=true&weeks=true](https://shanujha.github.io/lifecalendar-desktop/?res=4k&months=true&weeks=true)
-- **8K Super Retina (Minimalist)**: [?res=8k](https://shanujha.github.io/lifecalendar-desktop/?res=8k)
-- **8K Super Retina (Jumbo Dots)**: [?res=8k&scale=1.5](https://shanujha.github.io/lifecalendar-desktop/?res=8k&scale=1.5)
-
-### Custom & Ultra-Wide Screens
-- **MacBook Pro 14"**: [?w=3024&h=1964&scale=1.2](https://shanujha.github.io/lifecalendar-desktop/?w=3024&h=1964&scale=1.2)
-- **Ultra-Wide (21:9)**: [?w=3440&h=1440&scale=1.3](https://shanujha.github.io/lifecalendar-desktop/?w=3440&h=1440&scale=1.3)
-- **Super Ultra-Wide (32:9)**: [?w=5120&h=1440&scale=1.5](https://shanujha.github.io/lifecalendar-desktop/?w=5120&h=1440&scale=1.5)
-
-### One-Click Auto Download
-Append `&d=true` to any URL to trigger an automatic render and download.
-- **Auto-Render 4K Minimalist**: [?res=4k&d=true](https://shanujha.github.io/lifecalendar-desktop/?res=4k&d=true)
-- **Auto-Render 8K Detailed**: [?res=8k&months=true&weeks=true&d=true](https://shanujha.github.io/lifecalendar-desktop/?res=8k&months=true&weeks=true&d=true)
-
----
-
-## Configuration Parameter Reference
-
-Append these to the base URL `https://shanujha.github.io/lifecalendar-desktop/` to customize your render.
-
-### Display Toggles
-- `months=true`: Show month names (default: hidden).
-- `weeks=true`: Show weekday initials (default: hidden).
-
-### Resolution Presets
-- `res=1080p`: 1920 x 1080
-- `res=4k`: 3840 x 2160
-- `res=8k`: 7680 x 4320
-
-### Custom Sizes
-- `w=[pixels]`: Custom width (e.g., `w=2560`).
-- `h=[pixels]`: Custom height (e.g., `h=1440`).
-- `scale=[multiplier]`: Adjust dot size relative to resolution (e.g., `scale=1.5`).
-
-### Download Automation
-- `d=true`: Automatically trigger image download 1 second after load.
-
+The engine uses a **Best-Fit Algorithm** that automatically calculates the optimal dot size for your resolution.
+- `res`: Standard presets: `1080p`, `4k`, `8k`.
+- `w` / `h`: Custom width and height in pixels.
+- `scale`: Manual multiplier for the "Best-Fit" calculation.
+  - `1.0` (Default): Perfectly fills the screen edge-to-edge.
+  - `0.8`: Adds a comfortable margin around the grid.
+  - `1.2`: Enthusiastic bloom; dots become larger and may overflow the screen edges.
 
 ## Automation (Desktop Integration)
 
-You can automate the generation and application of your Life Calendar as a desktop wallpaper.
+For a seamless experience, we provide scripts to render and set your wallpaper in one command.
 
 ### Windows (PowerShell)
-We provide a PowerShell script in the `scripts/` folder that renders the calendar using headless Chrome/Edge and applies it to both your Desktop Background and Lock Screen.
+The `scripts/update_wallpaper.ps1` script launches a headless browser, renders the calendar at your desired resolution, saves it to your `assets/` folder, and sets it as both your **Desktop Background** and **Lock Screen**.
 
 **Usage:**
-1. Open PowerShell.
-2. Navigate to the project folder.
-3. Run the script:
-   ```powershell
-   .\scripts\update_wallpaper.ps1 -res 4k -months true
-   ```
+```powershell
+# Set a clean 4K wallpaper
+.\scripts\update_wallpaper.ps1 -res 4k
+
+# Set a Detailed 8K wallpaper with jumbo dots
+.\scripts\update_wallpaper.ps1 -res 8k -months true -weeks true -scale 1.5
+```
 
 **Parameters:**
-- `-res`: Resolution preset (`1080p`, `4k`, `8k`) or custom `width,height`.
-- `-scale`: Manual dot scaling (e.g., `1.2`).
-- `-months`: `true` to show month names.
-- `-weeks`: `true` to show week labels.
+- `-res`: Preset (`1080p`, `4k`, `8k`) or custom `width,height`.
+- `-scale`: Relative scale multiplier (default: `1.0`).
+- `-months`: `true` / `false`.
+- `-weeks`: `true` / `false`.
 
 ### Other Platforms
-Contributions are highly welcome for:
-- **macOS**: AppleScript or shell scripts for wallpaper/lockscreen integration.
-- **Linux**: Scripts for GNOME, KDE, or window managers (e.g., using `feh` or `gsettings`).
-- **AutoHotkey**: Scripts for scheduled updates or hotkey triggers.
+Contributions for macOS (AppleScript), Linux (feh/gsettings), and AutoHotkey are welcome!
 
 ---
 
 ## Contributing
 
-Contributions are welcome to improve the rendering engine or add new design features.
+Contributions are welcome to improve the rendering engine or add new scripts.
 1. Fork the repository.
 2. Create a feature branch.
-3. Submit a pull request with a detailed description of changes.
+3. Submit a pull request.
 
 ## License
 
