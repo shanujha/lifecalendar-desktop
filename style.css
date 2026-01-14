@@ -10,16 +10,73 @@ body {
 }
 
 main.grid {
+    --dot-size: 12px;
+    --dot-gap: 5px;
+    --header-font: 10px;
+    --week-font: 7px;
+    --month-gap: 2vh;
+    /* Relative to 1920 reference usually */
+    --month-padding: 4vh;
+
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 2vh 2vw;
+    gap: var(--month-gap) 2vw;
     width: 100vw;
     height: 100vh;
-    padding: 4vh 4vw;
+    padding: var(--month-padding) 4vw;
     box-sizing: border-box;
     place-items: center;
-    /* Centers each month-container in its cell */
+    background-color: #0d0d0d;
+    /* Explicit background for capture */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Override for high-res mode */
+main.grid.rendering {
+    overflow: visible;
+    height: auto;
+    width: auto;
+}
+
+#controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    z-index: 100;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+#controls:hover {
+    opacity: 1;
+}
+
+#download-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+#download-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#res-indicator {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+    font-family: 'Inter', sans-serif;
 }
 
 .month-container {
@@ -30,7 +87,7 @@ main.grid {
 }
 
 .month-header {
-    width: 114px;
+    width: calc(7 * var(--dot-size) + 6 * var(--dot-gap));
     /* Matches 7 dots + 6 gaps */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 6px;
@@ -40,7 +97,7 @@ main.grid {
 
 .month-name {
     color: rgba(255, 255, 255, 0.4);
-    font-size: 10px;
+    font-size: var(--header-font);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -49,13 +106,13 @@ main.grid {
 
 .month-grid {
     display: grid;
-    grid-template-columns: repeat(7, 12px);
-    grid-gap: 5px;
+    grid-template-columns: repeat(7, var(--dot-size));
+    grid-gap: var(--dot-gap);
 }
 
 .weekday-label {
     color: rgba(255, 255, 255, 0.2);
-    font-size: 7px;
+    font-size: var(--week-font);
     font-weight: 600;
     text-align: center;
     margin-bottom: 4px;
@@ -65,16 +122,16 @@ main.grid {
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: var(--dot-size);
+    height: var(--dot-size);
     border-radius: 50%;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: default;
 }
 
 .dot-spacer {
-    width: 12px;
-    height: 12px;
+    width: var(--dot-size);
+    height: var(--dot-size);
 }
 
 .dot:hover {
@@ -94,7 +151,7 @@ main.grid {
 
 .present {
     background-color: #ff4757;
-    box-shadow: 0 0 15px rgba(255, 71, 87, 0.8);
+    box-shadow: 0 0 calc(var(--dot-size) * 1.5) rgba(255, 71, 87, 0.8);
     transform: scale(1.1);
     z-index: 5;
     animation: pulse 2s infinite;
@@ -102,14 +159,14 @@ main.grid {
 
 @keyframes pulse {
     0% {
-        box-shadow: 0 0 10px rgba(255, 71, 87, 0.6);
+        box-shadow: 0 0 calc(var(--dot-size) * 0.8) rgba(255, 71, 87, 0.6);
     }
 
     50% {
-        box-shadow: 0 0 20px rgba(255, 71, 87, 1);
+        box-shadow: 0 0 calc(var(--dot-size) * 1.6) rgba(255, 71, 87, 1);
     }
 
     100% {
-        box-shadow: 0 0 10px rgba(255, 71, 87, 0.6);
+        box-shadow: 0 0 calc(var(--dot-size) * 0.8) rgba(255, 71, 87, 0.6);
     }
 }
