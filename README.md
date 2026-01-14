@@ -4,7 +4,7 @@
 
 ## How to Use
 
-<video src="assets/how_to.webm" controls="controls" style="max-width: 100%; height: auto; display: block;"></video>
+[how_to.webm](https://github.com/user-attachments/assets/249e1b3b-a9d8-4d15-b40a-4cb7f45870d2)
 
 ## Contents
 - [Overview](#overview)
