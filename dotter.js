@@ -36,7 +36,8 @@ function dotter() {
     grid.style.setProperty('--dot-gap', `${Math.max(1, Math.floor(5 * finalScale))}px`);
     grid.style.setProperty('--header-font', `${(10 * finalScale).toFixed(1)}px`);
     grid.style.setProperty('--week-font', `${(7 * finalScale).toFixed(1)}px`);
-    grid.style.setProperty('--stats-font', `${(12 * finalScale).toFixed(1)}px`);
+    const statsBaseSize = resParam === '8k' ? 16.2 : 14.4; // 12 * 1.35 for 8k, 12 * 1.20 for others
+    grid.style.setProperty('--stats-font', `${(statsBaseSize * finalScale).toFixed(1)}px`);
 
     const currentYear = today.getFullYear();
     const monthNames = [
