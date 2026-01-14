@@ -21,6 +21,27 @@ A high-resolution calendar generation engine that renders your year as a minimal
 
 ## Usage
 
+### For Windows Users
+
+Download the script in the `scripts` folder and save it where you want. I have saved it in `C:\tools\lifecaldesktop\lifecal.ps1`.
+
+If you have **Windows PowerShell**, run it with:
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\tools\lifecaldesktop\lifecal.ps1"
+```
+
+Else if you have **PowerShell 7**, run:
+```powershell
+pwsh -c lifecal.ps1
+```
+in the folder.
+
+I try to keep this folder in path and therefore to automate it I only need to run `pwsh -c lifecal.ps1` from the **Run** window. This way you can automate this small command from anywhere.
+
+Remember to read up on the [Execution Policy settings](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies).
+
+---
+
 The application is hosted at [shanujha.github.io/lifecalendar-desktop/](https://shanujha.github.io/lifecalendar-desktop/). 
 
 You can use the site directly to generate a layout, but for the best experience (especially for 4K/8K wallpapers), use the **URL Parameters** or the **Automation Scripts** provided below.
