@@ -2,6 +2,8 @@ const grid = document.querySelector('.grid');
 const downloadBtn = document.getElementById('download-btn');
 const resIndicator = document.getElementById('res-indicator');
 
+const today = new Date();
+
 function dotter() {
     const urlParams = new URLSearchParams(window.location.search);
     const showMonths = urlParams.get('months') === 'true';
@@ -52,7 +54,6 @@ function dotter() {
         resIndicator.innerText = `${targetW} x ${targetH} (${Math.round(finalScale * 100)}% absolute / ${Math.round(previewZoom * 100)}% preview)`;
     }
 
-    const today = new Date();
     const currentYear = today.getFullYear();
 
     const monthNames = [
@@ -122,43 +123,45 @@ function dotter() {
 
         monthContainer.appendChild(monthGrid);
         grid.appendChild(monthContainer);
-        // Auto-download logic
-        if (urlParams.get('d') === 'true') {
-            // Small delay to ensure browser has painted the grid before capturing
-            setTimeout(captureWallpaper, 1000);
-        }
     }
 
-    async function captureWallpaper() {
-        const originalText = downloadBtn.innerText;
-        downloadBtn.innerText = 'Capturing...';
-        downloadBtn.disabled = true;
-
-        try {
-            const canvas = await html2canvas(grid, {
-                backgroundColor: '#0d0d0d',
-                scale: 1,
-                useCORS: true,
-                logging: false,
-                onclone: (clonedDoc) => {
-                    const clonedGrid = clonedDoc.getElementById('capture-area');
-                    clonedGrid.style.transform = 'none';
-                    clonedGrid.style.transformOrigin = 'initial';
-                }
-            });
-
-            const link = document.createElement('a');
-            link.download = `life-calendar-${new Date().toISOString().split('T')[0]}.png`;
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        } catch (err) {
-            console.error('Wallpaper capture failed:', err);
-            alert('Failed to generate image. Browser memory limits might affect 8K renders.');
-        } finally {
-            downloadBtn.innerText = originalText;
-            downloadBtn.disabled = false;
-        }
+    // Auto-download logic
+    if (urlParams.get('d') === 'true') {
+        // Small delay to ensure browser has painted the grid before capturing
+        setTimeout(captureWallpaper, 1000);
     }
+}
 
-    downloadBtn.addEventListener('click', captureWallpaper);
-    dotter();
+async function captureWallpaper() {
+    const originalText = downloadBtn.innerText;
+    downloadBtn.innerText = 'Capturing...';
+    downloadBtn.disabled = true;
+
+    try {
+        const canvas = await html2canvas(grid, {
+            backgroundColor: '#0d0d0d',
+            scale: 1,
+            useCORS: true,
+            logging: false,
+            onclone: (clonedDoc) => {
+                const clonedGrid = clonedDoc.getElementById('capture-area');
+                clonedGrid.style.transform = 'none';
+                clonedGrid.style.transformOrigin = 'initial';
+            }
+        });
+
+        const link = document.createElement('a');
+        link.download = `life-calendar-${today.getFullYear()}-${new Date().toISOString().split('T')[0]}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    } catch (err) {
+        console.error('Wallpaper capture failed:', err);
+        alert('Failed to generate image. Browser memory limits might affect 8K renders.');
+    } finally {
+        downloadBtn.innerText = originalText;
+        downloadBtn.disabled = false;
+    }
+}
+
+downloadBtn.addEventListener('click', captureWallpaper);
+dotter();
