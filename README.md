@@ -14,9 +14,13 @@
 
 A high-resolution calendar generation engine that renders your year as a minimalist grid. Designed primarily for desktop wallpapers, it supports resolutions up to 8K with automated scaling and export.
 
+## Usage
+
+The application is hosted at [shanujha.github.io/lifecalendar-desktop/](https://shanujha.github.io/lifecalendar-desktop/). You can use it directly in your browser or through the URL parameters for custom wallpaper generation.
+
 ## Configuration Parameters
 
-The application is controlled via URL query parameters. Append these to the url to customize the output.
+The application is controlled via URL query parameters. Append these to the base URL to customize the output.
 
 ### Display Options
 By default, the interface shows only the dot grid.
@@ -32,12 +36,15 @@ By default, the interface shows only the dot grid.
 ### Download Options
 - `d=true`: Triggers an automatic download of the rendered image one second after page load.
 
-## Usage Examples
+## Examples
 
-- **Standard 4K**: `index.html?res=4k`
-- **Minimalist 8K**: `index.html?res=8k`
-- **Complete Labels (4K)**: `index.html?res=4k&months=true&weeks=true`
-- **Auto-Download 4K**: `index.html?res=4k&d=true`
+- **Standard 4K**: `?res=4k`
+- **Minimalist 8K**: `?res=8k`
+- **Complete Labels (4K)**: `?res=4k&months=true&weeks=true`
+- **Auto-Download 8K Minimalist**: `?res=8k&d=true`
+
+Full URL Example:
+`https://shanujha.github.io/lifecalendar-desktop/?res=8k&scale=2.5&d=true`
 
 
 ## Contributing
