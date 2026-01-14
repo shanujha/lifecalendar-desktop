@@ -4,7 +4,7 @@
 
 ## How to Use
 
-![How-To Video](assets/how_to.mp4)
+<video src="assets/how_to.mp4" controls="controls" style="max-width: 100%; height: auto; display: block;"></video>
 
 ## Contents
 - [Overview](#overview)
