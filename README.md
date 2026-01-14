@@ -4,9 +4,7 @@
 
 ## How to Use
 
-<div align="center">
-  <video src="https://github.com/shanujha/lifecalendar-desktop/raw/main/assets/how_to.mp4" width="100%" controls></video>
-</div>
+<video src="assets/how_to.webm" controls="controls" style="max-width: 100%; height: auto; display: block;"></video>
 
 ## Contents
 - [Overview](#overview)
