@@ -14,6 +14,13 @@
 
 A high-resolution calendar generation engine that renders your year as a minimalist grid. Designed primarily for desktop wallpapers, it supports resolutions up to 8K with automated scaling and export.
 
+## Contents
+- [Usage](#usage)
+- [Quick Start Examples](#quick-start-examples)
+- [Configuration Parameter Reference](#configuration-parameter-reference)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Usage
 
 The application is hosted at [shanujha.github.io/lifecalendar-desktop/](https://shanujha.github.io/lifecalendar-desktop/). You can use it directly in your browser or through the URL parameters for custom wallpaper generation.
