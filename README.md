@@ -2,7 +2,15 @@
 
 > 💡 Inspired by [thelifecalendar.com](https://thelifecalendar.com). They covered the mobile devices, i wanted on PC as well - so here we go!
 
+## Contents
+- [Overview](#overview)
+- [Usage](#usage)
+- [Quick Start Examples](#quick-start-examples)
+- [Configuration Parameter Reference](#configuration-parameter-reference)
+- [Contributing](#contributing)
+- [License](#license)
 
+## Overview
 ### 8k with Default Scaling
 ![8k](assets/8k.png)
 
@@ -14,12 +22,7 @@
 
 A high-resolution calendar generation engine that renders your year as a minimalist grid. Designed primarily for desktop wallpapers, it supports resolutions up to 8K with automated scaling and export.
 
-## Contents
-- [Usage](#usage)
-- [Quick Start Examples](#quick-start-examples)
-- [Configuration Parameter Reference](#configuration-parameter-reference)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Usage
 
