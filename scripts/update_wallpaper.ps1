@@ -38,10 +38,12 @@ $url = "https://shanujha.github.io/lifecalendar-desktop/?res=$res&scale=$scale&m
 Write-Host "Rendering $res wallpaper to $targetPath..." -ForegroundColor Cyan
 
 # 3. Capture screenshot
-# By setting --window-size, Headless Chrome determines the 100vw/100vh area
+# We force scale factor 1 to ensure 1:1 pixel mapping (no OS scaling interference)
 $chromeArgs = @(
     "--headless",
     "--disable-gpu",
+    "--no-sandbox",
+    "--force-device-scale-factor=1",
     "--screenshot=$targetPath",
     "--window-size=$windowSize",
     "--default-background-color=00000000",

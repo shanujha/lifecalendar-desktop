@@ -15,18 +15,27 @@ function dotter() {
 
     const resParam = urlParams.get('res');
     let targetW = parseInt(urlParams.get('w')) || (resShortcuts[resParam]?.w) || window.innerWidth;
+    let targetH = parseInt(urlParams.get('h')) || (resShortcuts[resParam]?.h) || window.innerHeight;
 
-    // Calculate base scaling factor (1920px as reference)
-    const baseScale = targetW / 1920;
+    // Calculate "Best Fit" Scale
+    // A month grid is roughly 7 dots wide and 6-9 "units" high (including header/weeks)
+    // We add buffer for gaps between months.
+    const horizontalUnits = (4 * 7) + 8; // 4 months + gaps/margins
+    const verticalUnits = (3 * 10) + 6;  // 3 months + headers/gaps/margins
+
+    const scaleW = targetW / (horizontalUnits * 12);
+    const scaleH = targetH / (verticalUnits * 12);
+
+    // Default to the smaller scale to ensure it fits the screen
+    const bestFitScale = Math.min(scaleW, scaleH);
     const manualScale = parseFloat(urlParams.get('scale')) || 1.0;
-    const finalScale = baseScale * manualScale;
+    const finalScale = bestFitScale * manualScale;
 
-    // Apply dynamic scaling to CSS variables for density
-    grid.style.setProperty('--dot-size', `${Math.round(12 * finalScale)}px`);
-    grid.style.setProperty('--dot-gap', `${Math.round(5 * finalScale)}px`);
-    grid.style.setProperty('--header-font', `${Math.round(10 * finalScale)}px`);
-    grid.style.setProperty('--week-font', `${Math.round(7 * finalScale)}px`);
-    grid.style.setProperty('--month-padding', `${Math.round(2 * finalScale)}vh`);
+    // Apply dynamic scaling to CSS variables
+    grid.style.setProperty('--dot-size', `${Math.max(2, Math.floor(12 * finalScale))}px`);
+    grid.style.setProperty('--dot-gap', `${Math.max(1, Math.floor(5 * finalScale))}px`);
+    grid.style.setProperty('--header-font', `${(10 * finalScale).toFixed(1)}px`);
+    grid.style.setProperty('--week-font', `${(7 * finalScale).toFixed(1)}px`);
 
     const currentYear = today.getFullYear();
     const monthNames = [

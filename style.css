@@ -15,7 +15,6 @@ main.grid {
     --dot-gap: 5px;
     --header-font: 10px;
     --week-font: 7px;
-    --month-padding: 2vh;
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -24,6 +23,9 @@ main.grid {
     height: 100vh;
     box-sizing: border-box;
     background-color: #0d0d0d;
+    place-items: center;
+    /* Ensure internal groups are centered in their cells */
+    padding: 2vh 2vw;
 }
 
 .month-container {
@@ -31,7 +33,8 @@ main.grid {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--month-padding);
+    width: 100%;
+    height: 100%;
 }
 
 .month-header {
@@ -55,6 +58,7 @@ main.grid {
     display: grid;
     grid-template-columns: repeat(7, var(--dot-size));
     grid-gap: var(--dot-gap);
+    justify-content: center;
 }
 
 .weekday-label {
