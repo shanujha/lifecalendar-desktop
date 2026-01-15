@@ -4,7 +4,9 @@ param (
     [string]$months = "false",
     [string]$weeks = "false",
     [string]$targetFolder = "$PSScriptRoot\..\assets",
-    [string]$fileName = "life.png"
+    [string]$fileName = "life.png",
+    [switch]$local,
+    [switch]$core
 )
 
 # 1. Setup paths and check for Chrome/Edge
@@ -32,9 +34,13 @@ $resolutions = @{
 }
 
 $windowSize = if ($resolutions.ContainsKey($res)) { $resolutions[$res] } else { $res }
-# We use the live URL or local file path
-$url = "https://shanujha.github.io/lifecalendar-desktop/?res=$res&scale=$scale&months=$months&weeks=$weeks"
 
+# 3. Determine Base URL and Path
+$baseUrl = if ($local) { "http://127.0.0.1:5500" } else { "https://shanujha.github.io/lifecalendar-desktop" }
+$path = if ($core) { "/core/" } else { "/" }
+
+$url = "${baseUrl}${path}?res=${res}&scale=${scale}&months=${months}&weeks=${weeks}"
+Write-Host "URL: $url" -ForegroundColor Yellow
 Write-Host "Rendering $res wallpaper to $targetPath..." -ForegroundColor Cyan
 
 # 3. Capture screenshot
@@ -71,18 +77,5 @@ public class Wallpaper {
 '@
 Add-Type -TypeDefinition $code -ErrorAction SilentlyContinue
 [Wallpaper]::SystemParametersInfo(20, 0, $targetPath, 3) | Out-Null
-
-# 5. Set Lock Screen (requires WinRT API access)
-Write-Host "Setting Lock Screen..." -ForegroundColor Cyan
-try {
-    $AsyncInfo = [Windows.System.UserProfile.LockScreen, Windows.System.UserProfile, ContentType = WindowsRuntime]
-    $file = Get-Item $targetPath
-    [Windows.Storage.StorageFile]::GetFileFromPathAsync($file.FullName).AsTask().ContinueWith({
-        param($task)
-        [Windows.System.UserProfile.LockScreen]::SetImageFileAsync($task.Result).AsTask().Wait()
-    }).Wait()
-} catch {
-    Write-Warning "Could not set Lock Screen. This typically happens if the script isn't running in a supported UWP/WinRT context."
-}
 
 Write-Host "Operation Complete! $res wallpaper applied." -ForegroundColor Green

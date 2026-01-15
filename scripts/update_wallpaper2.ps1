@@ -73,20 +73,4 @@ public class Wallpaper {
 
 [Wallpaper]::SystemParametersInfo(20, 0, $targetPath, 3) | Out-Null
 
-# 6. Set Lock Screen (WinRT – PS7 + STA required)
-Write-Host "Setting Lock Screen..." -ForegroundColor Cyan
-
-try {
-    Add-Type -AssemblyName System.Runtime.WindowsRuntime
-
-    $storageFile = [Windows.Storage.StorageFile, Windows.Storage, ContentType = WindowsRuntime]::GetFileFromPathAsync($targetPath).GetAwaiter().GetResult()
-
-    [Windows.System.UserProfile.LockScreen, Windows.System.UserProfile, ContentType = WindowsRuntime]::SetImageFileAsync($storageFile).GetAwaiter().GetResult()
-
-    Write-Host "Lock Screen updated." -ForegroundColor Green
-}
-catch {
-    Write-Warning "Lock Screen not set. Reason: $($_.Exception.Message)"
-}
-
 Write-Host "Done." -ForegroundColor Green

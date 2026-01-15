@@ -13,10 +13,9 @@
     <div id="stats"></div>
 </body>
 
+<script src="../lib/wallpaper.js"></script>
 <script>
-
     const currentYear = new Date().getFullYear();
-    let dayOfYearCounter = 0;
     const startOfYear = new Date(currentYear, 0, 0);
     const today = new Date();
     const diff = today - startOfYear;
@@ -24,7 +23,17 @@
     const dayOfYear = Math.floor(diff / oneDay) - 1;
 
     function main() {
-        for (i = 0; i <= 365; i++) {
+        // Core logic: A simple cluster of dots (30x13 approx)
+        WallpaperLib.setup('main', {
+            horizontalUnits: 30,
+            verticalUnits: 13,
+            baseSize: 30 // Core uses larger base dots
+        });
+
+        let dayOfYearCounter = 0;
+        const mainContainer = document.querySelector('main');
+
+        for (let i = 0; i < 366; i++) {
             const dot = document.createElement('div');
             dot.classList.add('dot');
             if (dayOfYearCounter < dayOfYear) {
@@ -35,24 +44,14 @@
                 dot.classList.add('future');
             }
             dayOfYearCounter++;
-            document.querySelector('main').appendChild(dot);
+            mainContainer.appendChild(dot);
         }
-    }
 
-    function stats() {
         const totalDays = Math.round((new Date(currentYear + 1, 0, 1) - new Date(currentYear, 0, 1)) / (1000 * 60 * 60 * 24));
-        const daysPassed = dayOfYear + 1;
-        const daysLeft = totalDays - daysPassed;
-        const percentCompleted = Math.floor((daysPassed / totalDays) * 100);
-
-        const statsElement = document.getElementById('stats');
-        if (statsElement) {
-            statsElement.innerText = `${daysLeft} days left - ${percentCompleted}% completed`;
-        }
+        WallpaperLib.updateStats(dayOfYear + 1, totalDays);
     }
 
     main();
-    stats();
 </script>
 
 </html>
