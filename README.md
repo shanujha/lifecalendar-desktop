@@ -44,9 +44,6 @@ I try to keep this folder in path and therefore to automate it I only need to ru
 
 Remember to read up on the [Execution Policy settings](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies).
 
-#### Having Trouble with Lock Screen?
-
-If you are having trouble with the lock screen, try running the script as administrator. Or if you are on Windows home - Fix Here
 ---
 
 The application is hosted at [shanujha.github.io/lifecalendar-desktop/](https://shanujha.github.io/lifecalendar-desktop/). 
