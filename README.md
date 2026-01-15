@@ -6,6 +6,25 @@
 
 [how_to.webm](https://github.com/user-attachments/assets/249e1b3b-a9d8-4d15-b40a-4cb7f45870d2)
 
+### Quick Start
+
+Run the following commands in your PowerShell terminal to download and set up the wallpaper script instantly:
+
+**1. Download the script**
+```powershell
+mkdir "C:\tools\lifecal" -Force; curl.exe -L "https://raw.githubusercontent.com/shanujha/lifecalendar-desktop/library/scripts/update_wallpaper.ps1" -o "C:\tools\lifecal\lifecal.ps1"
+```
+
+**2. Run Default Version**
+```powershell
+pwsh -File "C:\tools\lifecal\lifecal.ps1"
+```
+
+**3. Run Core Version (Minimalist)**
+```powershell
+pwsh -File "C:\tools\lifecal\lifecal.ps1" -core
+```
+
 ## Contents
 - [Overview](#overview)
 - [Usage](#usage)
@@ -19,30 +38,27 @@
 A high-resolution calendar generation engine that renders your year as a minimalist grid. Designed primarily for desktop wallpapers, it supports resolutions up to 8K with automated scaling and system integration.
 
 ### 8K Render Examples
-| Default Fit (Scale 1.0) | Jumbo Dots (Scale 2.0) | With Labels |
-| :--- | :--- | :--- |
-| ![8k](assets/8k.png) | ![8k_2.5](assets/8k2.png) | ![8k_2.0_w_m](assets/8k_weeks_months.png) |
+| Default Fit (Scale 1.0) | Jumbo Dots (Scale 2.0) | With Labels | Core Cluster |
+| :--- | :--- | :--- | :--- |
+| ![8k](assets/8k.png) | ![8k_2.5](assets/8k2.png) | ![8k_2.0_w_m](assets/8k_weeks_months.png) | ![core](assets/core_render.png) |
 
 ## Usage
 
 ### For Windows Users
 
-Download the script in the `scripts` folder and save it where you want. I have saved it in `C:\tools\lifecaldesktop\lifecal.ps1`.
+If you prefer manual setup, save the script to `C:\tools\lifecal\lifecal.ps1`.
 
-If you have **Windows PowerShell**, run it with:
+If you are using **Windows PowerShell (v5.1)**, you may need to bypass the execution policy:
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\tools\lifecaldesktop\lifecal.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\tools\lifecal\lifecal.ps1"
 ```
 
-Else if you have **PowerShell 7**, run:
+For **PowerShell 7 (pwsh)**, simply use:
 ```powershell
-pwsh -c lifecal.ps1
+pwsh -File "C:\tools\lifecal\lifecal.ps1"
 ```
-in the folder.
 
-I try to keep this folder in path and therefore to automate it I only need to run `pwsh -c lifecal.ps1` from the **Run** window. This way you can automate this small command from anywhere.
-
-Remember to read up on the [Execution Policy settings](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies).
+I recommend adding `C:\tools\lifecal` to your system **Path**. This allows you to run the script or automate it via the **Windows Run (Win+R)** window from anywhere.
 
 ---
 

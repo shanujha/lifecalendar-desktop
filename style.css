@@ -107,6 +107,7 @@ main.grid {
     color: #ff4757;
     font-size: var(--stats-font, 14px);
     font-weight: 600;
+    line-height: 1.4;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     opacity: 0.9;

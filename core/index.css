@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
 body {
     margin: 0;
     padding: 0;
@@ -43,13 +45,14 @@ main {
 
 #stats {
     position: absolute;
-    bottom: 3vh;
+    bottom: 5vh;
     left: 0;
     right: 0;
     text-align: center;
     color: #ff4757;
     font-size: var(--stats-font, 14px);
     font-weight: 600;
+    line-height: 1.4;
     text-transform: uppercase;
     font-family: 'Inter', sans-serif;
     letter-spacing: 0.2em;
