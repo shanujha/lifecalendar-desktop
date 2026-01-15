@@ -12,7 +12,7 @@ Run the following commands in your PowerShell terminal to download and set up th
 
 **1. Download the script**
 ```powershell
-mkdir "C:\tools\lifecal" -Force; curl.exe -L "https://raw.githubusercontent.com/shanujha/lifecalendar-desktop/library/scripts/update_wallpaper.ps1" -o "C:\tools\lifecal\lifecal.ps1"
+mkdir "C:\tools\lifecal" -Force; curl.exe -L "https://raw.githubusercontent.com/shanujha/lifecalendar-desktop/main/scripts/update_wallpaper.ps1" -o "C:\tools\lifecal\lifecal.ps1"
 ```
 
 **2. Run Default Version**

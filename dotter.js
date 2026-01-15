@@ -2,7 +2,12 @@ const grid = document.querySelector('.grid');
 const today = new Date();
 
 function dotter() {
-    const { params, finalScale } = WallpaperLib.setup('.grid', {
+    if (typeof WallpaperLib === 'undefined' || !WallpaperLib || typeof WallpaperLib.setup !== 'function') {
+        console.error('WallpaperLib is not available. Skipping dotter initialization.');
+        return;
+    }
+
+    const { params } = WallpaperLib.setup('.grid', {
         horizontalUnits: (4 * 7) + 8,
         verticalUnits: (3 * 10) + 6,
         baseSize: 12

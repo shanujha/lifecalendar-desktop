@@ -43,7 +43,7 @@ $url = "${baseUrl}${path}?res=${res}&scale=${scale}&months=${months}&weeks=${wee
 Write-Host "URL: $url" -ForegroundColor Yellow
 Write-Host "Rendering $res wallpaper to $targetPath..." -ForegroundColor Cyan
 
-# 3. Capture screenshot
+# 4. Capture screenshot
 # We force scale factor 1 to ensure 1:1 pixel mapping (no OS scaling interference)
 $chromeArgs = @(
     "--headless",
