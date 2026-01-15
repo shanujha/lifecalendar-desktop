@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Life Calendar</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <main>
+
+    </main>
+    <div id="stats"></div>
+</body>
+
+<script src="../lib/wallpaper.js"></script>
+<script>
+    const currentYear = new Date().getFullYear();
+    const startOfYear = new Date(currentYear, 0, 1);
+    const today = new Date();
+    const diff = today - startOfYear;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+
+    function main() {
+        // Core logic: A simple cluster of dots (30x13 approx)
+        WallpaperLib.setup('main', {
+            horizontalUnits: 30,
+            verticalUnits: 13,
+            baseSize: 30 // Core uses larger base dots
+        });
+
+        const totalDays = Math.round((new Date(currentYear + 1, 0, 1) - new Date(currentYear, 0, 1)) / (1000 * 60 * 60 * 24));
+        let dayOfYearCounter = 0;
+        const mainContainer = document.querySelector('main');
+
+        for (let i = 0; i < totalDays; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (dayOfYearCounter < dayOfYear) {
+                dot.classList.add('past');
+            } else if (dayOfYearCounter === dayOfYear) {
+                dot.classList.add('present');
+            } else {
+                dot.classList.add('future');
+            }
+            dayOfYearCounter++;
+            mainContainer.appendChild(dot);
+        }
+
+        WallpaperLib.updateStats(dayOfYear + 1, totalDays);
+    }
+
+    main();
+</script>
+
+</html>
