@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Life Calendar</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <main>
+
+    </main>
+    <div id="stats"></div>
+</body>
+
+<script>
+
+    const currentYear = new Date().getFullYear();
+    let dayOfYearCounter = 0;
+    const startOfYear = new Date(currentYear, 0, 0);
+    const today = new Date();
+    const diff = today - startOfYear;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay) - 1;
+
+    function main() {
+        for (i = 0; i <= 365; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (dayOfYearCounter < dayOfYear) {
+                dot.classList.add('past');
+            } else if (dayOfYearCounter === dayOfYear) {
+                dot.classList.add('present');
+            } else {
+                dot.classList.add('future');
+            }
+            dayOfYearCounter++;
+            document.querySelector('main').appendChild(dot);
+        }
+    }
+
+    function stats() {
+        const totalDays = Math.round((new Date(currentYear + 1, 0, 1) - new Date(currentYear, 0, 1)) / (1000 * 60 * 60 * 24));
+        const daysPassed = dayOfYear + 1;
+        const daysLeft = totalDays - daysPassed;
+        const percentCompleted = Math.floor((daysPassed / totalDays) * 100);
+
+        const statsElement = document.getElementById('stats');
+        if (statsElement) {
+            statsElement.innerText = `${daysLeft} days left - ${percentCompleted}% completed`;
+        }
+    }
+
+    main();
+    stats();
+</script>
+
+</html>

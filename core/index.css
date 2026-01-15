@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(25, 25, 25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* CHANGE 1: Set min-height to 100vh so vertical centering has space to work */
+    min-height: 100vh; 
+}
+
+/* ... classes for dots remain the same ... */
+.past { background-color: rgb(255, 255, 255); }
+.present { background-color: rgb(188, 63, 63); }
+.future { background-color: rgb(41, 41, 41); }
+.dot { width: 30px; height: 30px; border-radius: 50%; }
+
+main {
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(13, 1fr);
+    gap: 5px;
+    
+    /* CHANGE 2: Changed from 100vh to auto (or fit-content) */
+    height: auto; 
+    
+    /* Optional: Ensure the background wraps tightly around the dots */
+    width: fit-content; 
+}
+
+#stats {
+    position: absolute;
+    bottom: 3vh;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #ff4757;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.2em;
+    opacity: 0.9;
+    text-shadow: 0 0 20px rgba(255, 71, 87, 0.4);
+    pointer-events: none;
+}
