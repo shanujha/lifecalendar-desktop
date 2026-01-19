@@ -6,7 +6,10 @@ param (
     [string]$targetFolder = "$PSScriptRoot\..\assets",
     [string]$fileName = "life.png",
     [switch]$local,
-    [switch]$core
+    [switch]$core,
+    [switch]$dark,
+    [switch]$darker,
+    [switch]$light
 )
 
 # 1. Setup paths and check for Chrome/Edge
@@ -39,7 +42,12 @@ $windowSize = if ($resolutions.ContainsKey($res)) { $resolutions[$res] } else { 
 $baseUrl = if ($local) { "http://127.0.0.1:5500" } else { "https://shanujha.github.io/lifecalendar-desktop" }
 $path = if ($core) { "/core/" } else { "/" }
 
-$url = "${baseUrl}${path}?res=${res}&scale=${scale}&months=${months}&weeks=${weeks}"
+# 4. Determine Theme
+$theme = "dark"
+if ($darker) { $theme = "darker" }
+elseif ($light) { $theme = "light" }
+
+$url = "${baseUrl}${path}?res=${res}&scale=${scale}&months=${months}&weeks=${weeks}&theme=${theme}"
 Write-Host "URL: $url" -ForegroundColor Yellow
 Write-Host "Rendering $res wallpaper to $targetPath..." -ForegroundColor Cyan
 
