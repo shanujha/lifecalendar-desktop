@@ -74,6 +74,7 @@ The engine is controlled via URL query parameters. Append these to the base URL 
 By default, the interface is a minimalist dot grid.
 - `months=true`: Displays month names.
 - `weeks=true`: Displays weekday labels (S M T W T F S).
+- `theme`: Color scheme (`dark`, `darker`, `light`). Default: `dark`.
 
 ### Resolution and Scaling
 The engine uses a **Best-Fit Algorithm** that automatically calculates the optimal dot size for your resolution.
@@ -105,6 +106,9 @@ The `scripts/update_wallpaper.ps1` script launches a headless browser, renders t
 - `-scale`: Relative scale multiplier (default: `1.0`).
 - `-months`: `true` / `false`.
 - `-weeks`: `true` / `false`.
+- `-dark`: Default dark theme.
+- `-darker`: Even darker theme for OLED/minimalism.
+- `-light`: Light mode wallpaper.
 
 ### Other Platforms
 Contributions for macOS (AppleScript), Linux (feh/gsettings), and AutoHotkey are welcome!
