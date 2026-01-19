@@ -11,7 +11,7 @@
 
 body.theme-darker {
     --bg-color: rgb(10, 10, 10);
-    --past-color: rgb(200, 200, 200);
+    --past-color: rgb(255, 255, 255);
     --future-color: rgb(25, 25, 25);
     --stats-color: #cc3d4a;
     /* Darker red */
@@ -19,9 +19,9 @@ body.theme-darker {
 }
 
 body.theme-light {
-    --bg-color: rgb(245, 245, 245);
-    --past-color: rgb(40, 40, 40);
-    --future-color: rgb(220, 220, 220);
+    --bg-color: rgb(225, 225, 225);
+    --past-color: rgb(255, 255, 255);
+    --future-color: rgb(200, 200, 200);
     --stats-color: #ff4757;
     --stats-shadow: rgba(255, 71, 87, 0.2);
 }

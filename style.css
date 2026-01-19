@@ -14,16 +14,16 @@
 
 body.theme-darker {
     --bg-color: #050505;
-    --past-color: #cccccc;
+    --past-color: #ffffff;
     --future-color: rgba(255, 255, 255, 0.04);
     --stats-color: #cc3d4a;
     --stats-shadow: rgba(204, 61, 74, 0.3);
 }
 
 body.theme-light {
-    --bg-color: #f5f5f5;
-    --past-color: #262626;
-    --future-color: rgba(0, 0, 0, 0.08);
+    --bg-color: #e0e0e0;
+    --past-color: #ffffff;
+    --future-color: rgba(0, 0, 0, 0.06);
     --header-color: rgba(0, 0, 0, 0.4);
     --week-color: rgba(0, 0, 0, 0.2);
     --border-color: rgba(0, 0, 0, 0.1);
